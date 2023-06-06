@@ -2,10 +2,10 @@
 <ul>
     @foreach($productsList as $product)
         <li>
-            <p>Nombre: {{$product->name}}</p>
-            <p>Descripción: {{$product->description}}</p>
+            <p>Nombre: {{$product->getName()}}</p>
+            <p>Descripción: {{$product->getDescription()}}</p>
             <p>
-                <a href="{{route('product.destroy', $product->id)}}">delete</a>
+                <a href="{{route('product.destroy', $product->getId())}}">delete</a>
             </p>
         </li>
     @endforeach
