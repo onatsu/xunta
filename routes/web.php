@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ Route::get('/test', [TestController::class, 'showTest']);
 
 Route::resource('/product', ProductController::class)->except('destroy');
 Route::get('/product/{product}/destroy', [ProductController::class, 'destroy'])->name('product.destroy');
+
+Route::resource('/category', CategoryController::class);
