@@ -32,4 +32,9 @@ class Product extends Model
     public function getCodeBarAttribute(){
         return $this->productDetails->code_bar;
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

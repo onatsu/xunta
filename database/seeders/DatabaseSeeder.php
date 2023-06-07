@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductDetails;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,5 +24,7 @@ class DatabaseSeeder extends Seeder
             $product->save();
             $product->productDetails()->save(ProductDetails::factory()->create(['product_id' => $product->id]));
         });
+
+        Tag::factory(10)->create();
     }
 }
