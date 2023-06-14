@@ -6,6 +6,7 @@ use App\Domain\Contracts\IProductRepository;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -49,7 +50,16 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
+        $this->authorize('delete', $product);
         $product->delete();
         return \redirect(route('product.index'));
+    }
+
+    public function makeComment(Product $product){
+        return view('product.makeComment', compact('product'));
+    }
+
+    public function comment(Product $product, Request $request){
+        $product->comments()->create($request->all());
     }
 }

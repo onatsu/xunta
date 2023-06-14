@@ -10,6 +10,13 @@ class ProductPolicy
 {
     use HandlesAuthorization;
 
+    private IProductPolicy $productPolicy;
+
+    public function __construct(IProductPolicy $productPolicy)
+    {
+        $this->productPolicy = $productPolicy;
+    }
+
     /**
      * Determine whether the user can view any models.
      *
@@ -65,7 +72,7 @@ class ProductPolicy
      */
     public function delete(User $user, Product $product)
     {
-        //
+        return $this->productPolicy->delete($product,$user);
     }
 
     /**

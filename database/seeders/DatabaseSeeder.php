@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\Product;
 use App\Models\ProductDetails;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +19,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::factory()->create(['email' => 'admin@davidcruz.net', 'admin' => true]);
+        User::factory()->create(['email' => 'user@davidcruz.net']);
+
+
         $categories = Category::factory(10)->create();
         Product::factory(100)->make()->each(function ($product) use ($categories) {
             $category = $categories->random();
@@ -26,5 +32,6 @@ class DatabaseSeeder extends Seeder
         });
 
         Tag::factory(10)->create();
+        Post::factory(50)->create();
     }
 }

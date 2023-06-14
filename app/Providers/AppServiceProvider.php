@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Domain\Contracts\IProductRepository;
+use App\Http\Controllers\ProductController;
 use App\Infrastructure\Repositories\EloquentProductRepository;
 use Illuminate\Support\ServiceProvider;
 
